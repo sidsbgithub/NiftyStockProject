@@ -14,6 +14,7 @@ const Footer = () => {
         Data primarily sourced from Yahoo Finance (via yfinance library for backend).
         Signals and analysis are for educational and informational purposes only and do not constitute financial advice.
         Past performance is not indicative of future results. Always do your own research before investing.
+        Project By Siddhant Singh Bisht 
       </p>
     </footer>
   );
