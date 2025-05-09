@@ -90,3 +90,8 @@ dist-ssr # Server-side rendering
 # IDE / Editor specific (often good to have project-specific ones here too)
 .idea/
 .vscode/
+
+node_modules/
+dist/
+.env*
+# ... and other typical Node/Vite ignores
