@@ -4,7 +4,8 @@ import { Chart } from 'react-chartjs-2';
 import {
   Chart as ChartJS, 
   CategoryScale, LinearScale, PointElement, LineElement, BarElement,
-  Title, Tooltip, Legend, TimeScale, Filler 
+  Title, Tooltip, Legend, TimeScale, Filler ,
+  LineController
 } from 'chart.js';
 import { CandlestickController, CandlestickElement, OhlcController, OhlcElement } from 'chartjs-chart-financial'; 
 import 'chartjs-adapter-date-fns'; 
@@ -17,7 +18,8 @@ ChartJS.register(
   CategoryScale, LinearScale, PointElement, LineElement, BarElement,
   Title, Tooltip, Legend, TimeScale, Filler,
   CandlestickController, CandlestickElement, OhlcController, OhlcElement,
-  zoomPlugin, 
+  zoomPlugin,
+  LineController,
   annotationPlugin // --- REGISTER ANNOTATION PLUGIN ---
 );
 
