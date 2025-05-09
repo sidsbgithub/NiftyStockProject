@@ -19,7 +19,6 @@ This directory contains the React frontend for the Nifty DMA Analyzer, built wit
     stock_obj = yf.Ticker(ticker_symbol)
     stock_info_obj = {} 
     financials_annual, financials_quarterly, balance_sheet_annual, balance_sheet_quarterly, cash_flow_annual, cash_flow_quarterly = None, None, None, None, None, None
-    # news_data_list = [] # REMOVED or ensure it's always empty if key exists in payload
     historical_data_for_chart, dma_signals_historical = [], [] 
 
     try: 
