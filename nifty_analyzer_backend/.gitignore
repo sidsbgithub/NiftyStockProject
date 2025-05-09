@@ -1,0 +1,68 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python Virtual Environment
+venv/
+.venv/
+env/
+.env/ # Also common for environment variable files
+ENV/
+env.bak/
+venv.bak/
+
+# Flask instance folder
+instance/
+.webassets-cache
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Werkzeug cache files for development server
+*.pyc
+*.pyo
+
+# SQLite databases
+*.sqlite3
+*.db
+
+# Environment variables files
+.env
+.flaskenv
+config.py # If it contains secrets
+
+# Celery files
+celerybeat-schedule
+celerybeat.pid
+
+# Log files
+*.log

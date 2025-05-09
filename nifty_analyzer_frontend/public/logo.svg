@@ -1,0 +1,6 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="15" fill="#2c3e50"/> {/* Background, matches your header */}
+  <path d="M25 75 L35 60 L45 70 L55 50 L65 65 L75 45" stroke="#3498db" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28 60 L38 45 L48 55 L58 35 L68 50 L78 30" stroke="#e74c3c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="50" y="90" font-family="Arial, sans-serif" font-size="18" fill="#ecf0f1" text-anchor="middle" font-weight="bold">NDA</text> {/* Initials */}
+</svg>

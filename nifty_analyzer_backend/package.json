@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chartjs-adapter-date-fns": "^3.0.0",
+    "lightweight-charts": "^5.0.6"
+  }
+}

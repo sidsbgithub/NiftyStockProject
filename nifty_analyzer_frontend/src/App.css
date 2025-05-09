@@ -1,0 +1,920 @@
+/* src/App.css - Consolidated and Corrected Styles */
+
+/* === GLOBAL RESETS & BODY STYLES === */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* More modern font stack */
+  margin: 0;
+  background-color: #f4f7f6; /* Light grayish background */
+  color: #333;
+  line-height: 1.5; /* Improved readability */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === APP LAYOUT STRUCTURE === */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures footer is at bottom */
+}
+
+.main-content {
+  flex-grow: 1; /* Allows main content to expand */
+  padding: 1.5rem; /* Consistent padding */
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto; /* Center content area */
+  width: 100%;
+}
+
+/* === HEADER STYLES === */
+.app-header {
+  background-color: #2c3e50; /* Dark blue-grey */
+  color: white;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Slightly more pronounced shadow */
+  min-height: 60px;
+  position: sticky; /* Optional: makes header stick on scroll */
+  top: 0;
+  z-index: 1000; /* Ensures header is above other content if sticky */
+}
+
+.app-header .logo-link {
+  color: white;
+  text-decoration: none;
+}
+
+.app-header .logo-link h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.app-header .header-actions .theme-toggle-button {
+  background-color: #34495e; /* Button color */
+  color: white;
+  border: 1px solid #4a627a; /* Subtle border */
+  padding: 0.5rem 1rem;
+  border-radius: 5px; /* Slightly more rounded */
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.app-header .header-actions .theme-toggle-button:hover {
+  background-color: #4a627a; /* Darker on hover */
+}
+.app-header .header-actions .theme-toggle-button:active {
+  transform: translateY(1px); /* Slight press effect */
+}
+
+
+/* === FOOTER STYLES === */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: #e9ecef; /* Lighter grey for footer */
+  color: #495057; /* Darker text for footer readability */
+  font-size: 0.85rem;
+  border-top: 1px solid #dee2e6; /* Clearer top border */
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+.app-footer p {
+  margin: 0.4rem 0;
+}
+
+.app-footer .footer-disclaimer {
+  font-size: 0.75rem;
+  color: #6c757d; /* Muted disclaimer text */
+  max-width: 800px;
+  margin: 0.5rem auto 0 auto;
+  line-height: 1.4;
+}
+
+/* === DASHBOARD PAGE SPECIFIC STYLES === */
+.dashboard-page h2 {
+  text-align: center;
+  margin-bottom: 25px; /* More space below title */
+  font-size: 1.8rem; /* Larger title */
+  color: #343a40;
+}
+
+.filters-container {
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+  gap: 15px; /* More space between filter elements */
+  align-items: center;
+  padding: 10px;
+  background-color: #fff; /* Give filter area a background */
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.filters-container .search-input,
+.filters-container .signal-filter,
+.filters-container .refresh-button { /* Style refresh button similarly */
+  padding: 10px 12px; /* More padding for inputs */
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  font-size: 0.95rem;
+}
+
+.filters-container .search-input {
+  flex-grow: 1; /* Allow search to take more space */
+  min-width: 200px;
+}
+
+.filters-container .refresh-button {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.filters-container .refresh-button:hover {
+  background-color: #0056b3;
+}
+.filters-container .refresh-button:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: not-allowed;
+}
+
+
+/* Stock Table Styles */
+.stock-table-container {
+  overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+
+.stock-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Softer shadow */
+  border-radius: 6px; /* Rounded corners for table container */
+  overflow: hidden; /* To make border-radius work with table */
+}
+
+.stock-table-container th,
+.stock-table-container td {
+  border-bottom: 1px solid #e9ecef; /* Only bottom borders for rows */
+  padding: 12px 15px; /* More padding in cells */
+  text-align: left;
+  vertical-align: middle; /* Align content vertically */
+}
+
+.stock-table-container th {
+  background-color: #f8f9fa; /* Very light grey for headers */
+  color: #495057; /* Darker text for headers */
+  font-weight: 600; /* Bolder headers */
+  cursor: pointer;
+  white-space: nowrap; /* Prevent header text from wrapping */
+}
+.stock-table-container th:hover {
+  background-color: #e9ecef;
+}
+
+.stock-table-container tbody tr:hover {
+  background-color: #f1f3f5; /* Subtle hover for rows */
+}
+
+.stock-table-container td a { /* Style links within table */
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.stock-table-container td a:hover {
+  text-decoration: underline;
+}
+
+/* === UPDATED Signal Badge Styles === */
+.signal-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 90px; 
+  text-align: center;
+  line-height: 1.4; 
+}
+
+/* DETAILED Signal Styles (Light Mode) */
+.signal-strong-buy { background-color: #1e7e34; } 
+.signal-recent-buy { background-color: #218838; } 
+.signal-buy { background-color: #28a745; }       
+.signal-potential-buy { background-color: #5bc0de; } /* Light Info Blue/Teal for potential buy */
+
+.signal-strong-sell { background-color: #b21f2d; } 
+.signal-recent-sell { background-color: #c82333; } 
+.signal-sell { background-color: #dc3545; }        
+.signal-potential-sell { background-color: #f0ad4e; color: #212529;} /* Light Warning Orange for potential sell, dark text */
+
+.signal-neutral { background-color: #ffc107; color: #212529; } 
+
+.signal-na, 
+.signal-default { background-color: #6c757d; } 
+
+
+/* Price Change Text Color */
+.price-up { color: #28a745; font-weight: 500; }
+.price-down { color: #dc3545; font-weight: 500; }
+.price-neutral { color: #6c757d; } /* Muted neutral color */
+
+/* Loading and Error Message Styles */
+.loading-spinner, .error-message {
+  text-align: center;
+  padding: 30px 20px; /* More padding */
+  font-size: 1.2em;
+  border-radius: 6px;
+}
+.loading-spinner {
+  color: #007bff;
+}
+.error-message {
+  background-color: #f8d7da; /* Light red background for errors */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb;
+}
+
+/* === DARK MODE STYLES === */
+/* Apply these by toggling a 'dark-mode' class on the <body> or main .app div */
+
+body.dark-mode,
+.app.dark-mode-active { /* Use one of these selectors based on your App.jsx logic */
+  background-color: #1a202c; /* Darker background */
+  color: #cbd5e0; /* Lighter text */
+}
+
+/* Dark Mode: Header */
+body.dark-mode .app-header,
+.app.dark-mode-active .app-header {
+  background-color: #2d3748; /* Darker header */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid #4a5568; /* Subtle border */
+}
+body.dark-mode .app-header .logo-link h1,
+.app.dark-mode-active .app-header .logo-link h1 {
+  color: #e2e8f0;
+}
+body.dark-mode .app-header .header-actions .theme-toggle-button,
+.app.dark-mode-active .app-header .header-actions .theme-toggle-button {
+  background-color: #4a5568;
+  border-color: #718096;
+  color: #e2e8f0;
+}
+body.dark-mode .app-header .header-actions .theme-toggle-button:hover,
+.app.dark-mode-active .app-header .header-actions .theme-toggle-button:hover {
+  background-color: #718096;
+}
+
+/* Dark Mode: Footer */
+body.dark-mode .app-footer,
+.app.dark-mode-active .app-footer {
+  background-color: #2d3748; /* Match header dark */
+  color: #a0aec0;
+  border-top: 1px solid #4a5568;
+}
+body.dark-mode .app-footer .footer-disclaimer,
+.app.dark-mode-active .app-footer .footer-disclaimer {
+  color: #718096;
+}
+
+/* Dark Mode: Dashboard Specifics */
+body.dark-mode .dashboard-page h2,
+.app.dark-mode-active .dashboard-page h2 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .filters-container,
+.app.dark-mode-active .filters-container {
+  background-color: #2d3748; /* Darker filter area */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+body.dark-mode .filters-container .search-input,
+body.dark-mode .filters-container .signal-filter,
+.app.dark-mode-active .filters-container .search-input,
+.app.dark-mode-active .filters-container .signal-filter {
+  background-color: #4a5568; /* Dark input fields */
+  color: #e2e8f0;
+  border: 1px solid #718096;
+}
+body.dark-mode .filters-container .refresh-button,
+.app.dark-mode-active .filters-container .refresh-button {
+  background-color: #3182ce; /* Dark mode blue */
+  border-color: #3182ce;
+  color: #fff;
+}
+body.dark-mode .filters-container .refresh-button:hover,
+.app.dark-mode-active .filters-container .refresh-button:hover {
+  background-color: #2c5282; /* Darker blue */
+}
+body.dark-mode .filters-container .refresh-button:disabled,
+.app.dark-mode-active .filters-container .refresh-button:disabled {
+  background-color: #2d3748;
+  border-color: #2d3748;
+  color: #718096;
+}
+
+
+/* Dark Mode: Table */
+body.dark-mode .stock-table-container table,
+.app.dark-mode-active .stock-table-container table {
+  background-color: #2d3748; /* Dark table background */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .stock-table-container th,
+body.dark-mode .stock-table-container td,
+.app.dark-mode-active .stock-table-container th,
+.app.dark-mode-active .stock-table-container td {
+  border-bottom: 1px solid #4a5568; /* Darker borders */
+}
+
+body.dark-mode .stock-table-container th,
+.app.dark-mode-active .stock-table-container th {
+  background-color: #4a5568; /* Darker header background */
+  color: #e2e8f0;
+}
+body.dark-mode .stock-table-container th:hover,
+.app.dark-mode-active .stock-table-container th:hover {
+  background-color: #718096;
+}
+
+
+body.dark-mode .stock-table-container tbody tr:hover,
+.app.dark-mode-active .stock-table-container tbody tr:hover {
+  background-color: #4a5568a0; /* Slightly transparent dark hover */
+}
+
+body.dark-mode .stock-table-container td a,
+.app.dark-mode-active .stock-table-container td a {
+  color: #63b3ed; /* Lighter blue for links in dark mode */
+}
+
+/* Dark Mode: DETAILED Signal Badges */
+body.dark-mode .signal-strong-buy,
+.app.dark-mode-active .signal-strong-buy { background-color: #276749; } 
+body.dark-mode .signal-recent-buy,
+.app.dark-mode-active .signal-recent-buy { background-color: #2f855a; }
+body.dark-mode .signal-buy,
+.app.dark-mode-active .signal-buy { background-color: #38a169; } 
+body.dark-mode .signal-potential-buy,
+.app.dark-mode-active .signal-potential-buy { background-color: #2b6cb0; } 
+
+body.dark-mode .signal-strong-sell,
+.app.dark-mode-active .signal-strong-sell { background-color: #c53030; } 
+body.dark-mode .signal-recent-sell,
+.app.dark-mode-active .signal-recent-sell { background-color: #e53e3e; } 
+body.dark-mode .signal-sell,
+.app.dark-mode-active .signal-sell { background-color: #f56565; color: #1a202c;} 
+body.dark-mode .signal-potential-sell,
+.app.dark-mode-active .signal-potential-sell { background-color: #c05621; color: #f7fafc;} 
+
+body.dark-mode .signal-neutral,
+.app.dark-mode-active .signal-neutral { background-color: #dd6b20; color: #f7fafc; } 
+
+body.dark-mode .signal-na, 
+body.dark-mode .signal-default,
+.app.dark-mode-active .signal-na,
+.app.dark-mode-active .signal-default { background-color: #4a5568; } 
+
+
+/* Dark Mode: Price Change Text */
+body.dark-mode .price-up,
+.app.dark-mode-active .price-up { color: #48bb78; } /* Dark mode green */
+body.dark-mode .price-down,
+.app.dark-mode-active .price-down { color: #f56565; } /* Dark mode red */
+body.dark-mode .price-neutral,
+.app.dark-mode-active .price-neutral { color: #a0aec0; } /* Lighter grey for neutral */
+
+/* Dark Mode: Error Message */
+body.dark-mode .error-message,
+.app.dark-mode-active .error-message {
+  background-color: #4a2125; /* Dark red background */
+  color: #feb2b2; /* Light red text */
+  border: 1px solid #c53030;
+}
+
+
+/* src/App.css */
+
+/* ... (Keep all your existing GLOBAL, APP LAYOUT, HEADER, FOOTER, DASHBOARD styles) ... */
+
+
+/* === STOCK DETAIL PAGE SPECIFIC STYLES === */
+.stock-detail-page-container {
+  padding: 20px 15px; /* Default padding, can be overridden by .main-content */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stock-detail-header {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0; /* Slightly more visible separator */
+}
+
+.stock-detail-header h1 {
+  margin-bottom: 5px; /* Space between title and subtitle */
+  font-size: 2rem; /* Slightly larger stock name */
+}
+.stock-detail-header h1 span { /* For the (TICKER) part */
+  font-size: 0.65em; 
+  color: #555; 
+  font-weight: 400;
+  margin-left: 8px;
+}
+.stock-detail-header p { /* For Sector - Industry */
+  margin: 0;
+  color: #495057;
+  font-size: 0.95em;
+}
+
+.stock-detail-page-container section { /* Common styling for sections */
+  margin-bottom: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+.stock-detail-page-container section:first-of-type { /* Remove top border from the very first section if header has one */
+    /* border-top: none; */ /* Or adjust depending on your .stock-detail-header border */
+    /* padding-top: 0; */
+}
+.stock-detail-page-container section h3 { /* Section titles */
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #343a40;
+}
+
+/* Card Style - used for multiple blocks */
+.card-style {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 20px; /* Increased padding slightly */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Slightly softer shadow */
+  margin-bottom: 15px; 
+}
+
+.card-style h3, 
+.card-style h4 {
+  margin-top: 0;
+  margin-bottom: 12px; /* Consistent bottom margin for card titles */
+  color: #333;
+}
+.card-style p {
+  margin-bottom: 8px; /* Spacing between paragraphs in cards */
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+.card-style p strong {
+  color: #555; /* Slightly darker strong text */
+}
+
+.price-volume-card .h3, /* Targeting the specific large price display if needed */
+.market-snapshot-section .price-volume-card p[style*="font-size: 2em"] { /* More specific if needed */
+  font-size: 2.2em !important; /* Ensure it's large */
+  margin: 5px 0 10px 0; /* Adjust spacing around large price */
+}
+
+
+/* Business Summary specific styling */
+.business-summary-card p {
+  white-space: pre-line;
+  max-height: 250px;
+  overflow-y: auto;
+  font-size: 0.9em;
+  line-height: 1.6;
+  border: 1px solid #f0f0f0;
+  padding: 15px;
+  background-color: #fdfdfd; /* Slightly off-white background for the text box */
+  border-radius: 4px;
+}
+
+/* News Section specific styling */
+.news-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+.news-section li.card-style { /* If news items are cards */
+  margin-bottom: 15px;
+}
+.news-section li h5 { /* News title */
+  margin-bottom: 5px;
+}
+.news-section li h5 a {
+  text-decoration: none;
+  color: #007bff; /* Link color */
+}
+.news-section li h5 a:hover {
+  text-decoration: underline;
+}
+.news-section li div { /* Publisher and date */
+  font-size: 0.85em;
+  color: #6c757d;
+}
+
+/* Refresh button on detail page - can share style with dashboard's .refresh-button */
+/* If .refresh-button is globally styled (e.g. in .filters-container), you might not need this, */
+/* or you can make a more generic .btn-refresh class. */
+/* .stock-detail-page-container .refresh-button { ... } */
+
+
+/* === DARK MODE STYLES for Stock Detail Page === */
+
+body.dark-mode .stock-detail-page-container,
+.app.dark-mode-active .stock-detail-page-container {
+  /* Basic dark mode adjustment for the page container if needed, often inherited */
+}
+
+body.dark-mode .stock-detail-header,
+.app.dark-mode-active .stock-detail-header {
+  border-bottom-color: #4a5568;
+}
+body.dark-mode .stock-detail-header h1,
+.app.dark-mode-active .stock-detail-header h1 {
+  color: #e2e8f0;
+}
+body.dark-mode .stock-detail-header h1 span,
+.app.dark-mode-active .stock-detail-header h1 span {
+  color: #a0aec0;
+}
+body.dark-mode .stock-detail-header p,
+.app.dark-mode-active .stock-detail-header p {
+  color: #cbd5e0;
+}
+
+body.dark-mode .stock-detail-page-container section,
+.app.dark-mode-active .stock-detail-page-container section {
+  border-top-color: #4a5568;
+}
+body.dark-mode .stock-detail-page-container section h3,
+.app.dark-mode-active .stock-detail-page-container section h3 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .card-style,
+.app.dark-mode-active .card-style {
+  background-color: #2d3748;
+  border-color: #4a5568;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+body.dark-mode .card-style h3, 
+body.dark-mode .card-style h4,
+.app.dark-mode-active .card-style h3,
+.app.dark-mode-active .card-style h4 {
+  color: #e2e8f0;
+}
+body.dark-mode .card-style p,
+.app.dark-mode-active .card-style p {
+  color: #cbd5e0;
+}
+body.dark-mode .card-style p strong,
+.app.dark-mode-active .card-style p strong {
+  color: #e2e8f0; /* Make strong text lighter in dark mode */
+}
+
+
+body.dark-mode .business-summary-card p,
+.app.dark-mode-active .business-summary-card p {
+  border-color: #4a5568;
+  background-color: #1e2533; /* Slightly different dark for text box */
+}
+
+body.dark-mode .news-section li.card-style, /* if news are cards */
+.app.dark-mode-active .news-section li.card-style {
+    /* Already covered by .card-style dark mode if applied */
+}
+
+body.dark-mode .news-section li h5 a,
+.app.dark-mode-active .news-section li h5 a {
+  color: #63b3ed; /* Lighter blue for links */
+}
+body.dark-mode .news-section li div,
+.app.dark-mode-active .news-section li div {
+  color: #a0aec0;
+}
+
+/* Dark Mode for btn-secondary if you use it (like Back to Dashboard button) */
+body.dark-mode .btn-secondary,
+.app.dark-mode-active .btn-secondary {
+    background-color: #4a5568;
+    border-color: #4a5568;
+    color: #e2e8f0;
+}
+body.dark-mode .btn-secondary:hover,
+.app.dark-mode-active .btn-secondary:hover {
+    background-color: #718096;
+    border-color: #718096;
+}
+
+/* src/App.css - Enhanced Styles */
+
+/* === GLOBAL RESETS & BODY STYLES === */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: #f4f7f6; 
+  color: #333;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body.dark-mode { background-color: #1a202c; color: #cbd5e0; }
+
+/* === APP LAYOUT STRUCTURE === */
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.app.dark-mode-active { background-color: #1a202c; color: #cbd5e0; } /* For app-level div if used */
+
+.main-content {
+  flex-grow: 1; padding: 1.5rem; max-width: 1200px;
+  margin: 0 auto; width: 100%; box-sizing: border-box;
+}
+
+/* === HEADER STYLES === */
+.app-header {
+  background-color: #2c3e50; color: white; padding: 0.8rem 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); min-height: 60px;
+  position: sticky; top: 0; z-index: 1000;
+}
+body.dark-mode .app-header, .app.dark-mode-active .app-header {
+  background-color: #2d3748; box-shadow: 0 2px 5px rgba(0,0,0,0.25); border-bottom: 1px solid #4a5568;
+}
+.app-header .logo-link { color: white; text-decoration: none; }
+.app-header .logo-link h1 { margin: 0; font-size: 1.6rem; font-weight: 600; }
+body.dark-mode .app-header .logo-link h1, .app.dark-mode-active .app-header .logo-link h1 { color: #e2e8f0; }
+.app-header .header-actions .theme-toggle-button {
+  background-color: #34495e; color: white; border: 1px solid #4a627a;
+  padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+.app-header .header-actions .theme-toggle-button:hover { background-color: #4a627a; }
+.app-header .header-actions .theme-toggle-button:active { transform: translateY(1px); }
+body.dark-mode .app-header .header-actions .theme-toggle-button, 
+.app.dark-mode-active .app-header .header-actions .theme-toggle-button {
+  background-color: #4a5568; border-color: #718096; color: #e2e8f0;
+}
+body.dark-mode .app-header .header-actions .theme-toggle-button:hover,
+.app.dark-mode-active .app-header .header-actions .theme-toggle-button:hover { background-color: #718096; }
+
+/* === FOOTER STYLES === */
+.app-footer {
+  text-align: center; padding: 1.5rem 1rem; background-color: #e9ecef;
+  color: #495057; font-size: 0.85rem; border-top: 1px solid #dee2e6; margin-top: auto;
+}
+body.dark-mode .app-footer, .app.dark-mode-active .app-footer { 
+  background-color: #2d3748; color: #a0aec0; border-top-color: #4a5568; 
+}
+.app-footer p { margin: 0.4rem 0; }
+.app-footer .footer-disclaimer {
+  font-size: 0.75rem; color: #6c757d; max-width: 800px; margin: 0.5rem auto 0 auto; line-height: 1.4;
+}
+body.dark-mode .app-footer .footer-disclaimer, .app.dark-mode-active .app-footer .footer-disclaimer { color: #718096; }
+
+/* === COMMON BUTTON STYLES (NEW/MODIFIED) === */
+.btn { /* Generic button base for RouterLink styled as button */
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  text-decoration: none; /* For RouterLink */
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-secondary:hover { color: #fff; background-color: #5a6268; border-color: #545b62; }
+body.dark-mode .btn-secondary, .app.dark-mode-active .btn-secondary {
+    background-color: #4a5568; border-color: #4a5568; color: #e2e8f0;
+}
+body.dark-mode .btn-secondary:hover, .app.dark-mode-active .btn-secondary:hover {
+    background-color: #718096; border-color: #718096;
+}
+
+.refresh-button { /* Base for all refresh buttons */
+  padding: 10px 15px; /* Standardized padding */
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+.refresh-button:hover { background-color: #0056b3; border-color: #0052a2; }
+.refresh-button:disabled { background-color: #6c757d; border-color: #6c757d; cursor: not-allowed; opacity: 0.65; }
+body.dark-mode .refresh-button, .app.dark-mode-active .refresh-button {
+  background-color: #3182ce; border-color: #2c5282; color: #e2e8f0;
+}
+body.dark-mode .refresh-button:hover, .app.dark-mode-active .refresh-button:hover {
+  background-color: #2c5282; border-color: #2b6cb0;
+}
+body.dark-mode .refresh-button:disabled, .app.dark-mode-active .refresh-button:disabled {
+  background-color: #2d3748; border-color: #2d3748; color: #718096;
+}
+
+/* Specific style for dashboard quick refresh button */
+.filters-container .quick-refresh-button {
+  background-color: #17a2b8; border-color: #17a2b8;
+}
+.filters-container .quick-refresh-button:hover {
+  background-color: #138496; border-color: #117a8b;
+}
+body.dark-mode .filters-container .quick-refresh-button, 
+.app.dark-mode-active .filters-container .quick-refresh-button {
+  background-color: #319795; border-color: #2c7a7b;
+}
+body.dark-mode .filters-container .quick-refresh-button:hover,
+.app.dark-mode-active .filters-container .quick-refresh-button:hover {
+  background-color: #2c7a7b;
+}
+
+
+/* === DASHBOARD PAGE SPECIFIC STYLES === */
+.dashboard-page h2 { /* ... Keep your existing dashboard styles ... */ }
+.filters-container { /* ... Keep your existing dashboard styles ... */ }
+.filters-container .search-input, .filters-container .signal-filter { /* ... Keep ... */ }
+/* .filters-container .refresh-button now uses common .refresh-button and .quick-refresh-button */
+
+/* Stock Table Styles */
+.stock-table-container { /* ... Keep your existing stock table styles ... */ }
+.stock-table-container table { /* ... */ }
+.stock-table-container th, .stock-table-container td { /* ... */ }
+.stock-table-container th { /* ... */ }
+.stock-table-container th:hover { /* ... */ }
+.stock-table-container tbody tr:hover { /* ... */ }
+.stock-table-container td a { /* ... */ }
+body.dark-mode .stock-table-container /* ... (All dark mode for dashboard table) ... */
+
+
+/* === UPDATED Signal Badge Styles === */
+.signal-badge { /* ... Keep your existing signal badge styles ... */ }
+/* DETAILED Signal Styles (Light Mode) */
+.signal-strong-buy { /* ... */ } 
+/* ... (all specific signal badge styles for light and dark mode) ... */
+body.dark-mode .signal-strong-buy, .app.dark-mode-active .signal-strong-buy { /* ... */ }
+
+
+/* Price Change Text Color */
+.price-up { /* ... Keep ... */ }
+.price-down { /* ... Keep ... */ }
+.price-neutral { /* ... Keep ... */ }
+body.dark-mode .price-up, .app.dark-mode-active .price-up { /* ... */ }
+/* ... (and for down/neutral) ... */
+
+/* Loading and Error Message Styles */
+.loading-spinner, .error-message { /* ... Keep and ensure dark mode versions are good ... */ }
+body.dark-mode .loading-spinner, .app.dark-mode-active .loading-spinner { /* ... */ }
+body.dark-mode .error-message, .app.dark-mode-active .error-message { /* ... */ }
+
+
+/* === STOCK DETAIL PAGE SPECIFIC STYLES (Refined) === */
+.stock-detail-page-container {
+  /* Base padding/max-width handled by .main-content */
+}
+
+.stock-detail-header {
+  margin-bottom: 30px; /* More space after header */
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dee2e6; 
+}
+.stock-detail-header h1 {
+  margin-top: 0; margin-bottom: 8px; 
+  font-size: 2.2rem; color: #212529; font-weight: 600;
+}
+.stock-detail-header h1 span { 
+  font-size: 0.7em; color: #495057; font-weight: 400; margin-left: 10px;
+}
+.stock-detail-header p.page-subtitle { /* Add class="page-subtitle" to the sector/industry p tag in JSX */
+  margin: 0; color: #6c757d; font-size: 1rem;
+}
+/* Refresh button in stock-detail-header inherits .refresh-button styles */
+
+.stock-detail-page-container section { 
+  margin-bottom: 35px; /* Increased section spacing */
+  padding-top: 25px;
+  border-top: 1px solid #e9ecef; /* Lighter separator */
+}
+.stock-detail-page-container > .stock-detail-header + section { 
+   border-top: none; /* First section after header doesn't need top border */
+   padding-top: 5px; /* Reduced top padding for first content section */
+}
+.stock-detail-page-container section h3 { /* Section titles */
+  margin-top: 0; margin-bottom: 20px; 
+  font-size: 1.75rem; color: #343a40;
+  border-bottom: 2px solid #007bff; /* Accent color for section title underline */
+  padding-bottom: 10px; display: inline-block; /* To make border only under text */
+}
+
+.card-style { /* General card style for detail page */
+  background-color: #ffffff; border: 1px solid #e0e0e0; 
+  border-radius: 8px; padding: 20px 25px; /* More padding */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.07); margin-bottom: 20px; 
+}
+.card-style h4 { /* Card sub-titles */
+  margin-top: 0; margin-bottom: 15px; 
+  color: #2c3e50; font-size: 1.15rem; font-weight: 600;
+}
+.card-style p { margin-bottom: 8px; line-height: 1.7; font-size: 0.9rem; color: #495057; }
+.card-style p strong { color: #212529; font-weight: 600; margin-right: 6px; }
+
+.price-volume-card p.price-display { /* Add class="price-display" to the large CMP p tag */
+  font-size: 2.2rem !important; font-weight: bold; margin: 5px 0 10px 0; 
+}
+
+.business-summary-card p {
+  white-space: pre-line; max-height: 250px; overflow-y: auto; font-size: 0.9em;
+  line-height: 1.7; border: 1px solid #f0f0f0; padding: 15px;
+  background-color: #fdfdfd; border-radius: 4px; margin: 0;
+}
+
+.news-section ul { list-style: none; padding-left: 0; }
+.news-section li.card-style { margin-bottom: 15px; padding: 15px;} 
+.news-section li h5 { margin-top: 0; margin-bottom: 5px; font-size: 1.1rem; }
+.news-section li h5 a { text-decoration: none; color: #0069d9; }
+.news-section li h5 a:hover { text-decoration: underline; color: #004085; }
+.news-section li div { font-size: 0.8rem; color: #6c757d; }
+
+/* Financial Table specific styles */
+.financial-table-container { margin-bottom: 30px; }
+.financial-table-container h4 { font-size: 1.2rem; color: #2c3e50; margin-bottom: 12px; }
+.financial-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+.financial-table th,
+.financial-table td { padding: 9px 12px; border: 1px solid #d1d9e1; white-space: nowrap; }
+.financial-table thead tr { background-color: #e9ecef; border-bottom: 2px solid #adb5bd; }
+.financial-table th { text-align: center; font-weight: 600; color: #343a40; }
+.financial-table td { text-align: right; color: #495057;}
+.financial-table td:first-child { text-align: left; font-weight: 500; color: #212529;}
+.financial-table tbody tr:nth-child(even) { background-color: #f8f9fa; }
+.financial-table tbody tr:hover { background-color: #e9f5ff; } /* Hover for financial table rows */
+
+
+/* Dark Mode: STOCK DETAIL PAGE */
+body.dark-mode .stock-detail-header, .app.dark-mode-active .stock-detail-header { border-bottom-color: #4a5568; }
+body.dark-mode .stock-detail-header h1, .app.dark-mode-active .stock-detail-header h1 { color: #e9ecef; }
+body.dark-mode .stock-detail-header h1 span, .app.dark-mode-active .stock-detail-header h1 span { color: #90a4ae; }
+body.dark-mode .stock-detail-header p.page-subtitle, .app.dark-mode-active .stock-detail-header p.page-subtitle { color: #bdc3c7; }
+
+body.dark-mode .stock-detail-page-container section, .app.dark-mode-active .stock-detail-page-container section { border-top-color: #4a5568; }
+body.dark-mode .stock-detail-page-container section h3, .app.dark-mode-active .stock-detail-page-container section h3 { color: #e9ecef; border-bottom-color: #007bff; } /* Keep accent or use #4a5568 */
+
+body.dark-mode .card-style, .app.dark-mode-active .card-style { background-color: #2d3748; border-color: #4a5568; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+body.dark-mode .card-style h4, .app.dark-mode-active .card-style h4 { color: #e2e8f0; border-bottom-color: #4a5568; }
+body.dark-mode .card-style p, .app.dark-mode-active .card-style p { color: #b0bec5; }
+body.dark-mode .card-style p strong, .app.dark-mode-active .card-style p strong { color: #e0e0e0; }
+
+body.dark-mode .business-summary-card p, .app.dark-mode-active .business-summary-card p { border-color: #4a5568; background-color: #1e2533; }
+body.dark-mode .news-section li h5 a, .app.dark-mode-active .news-section li h5 a { color: #63b3ed; }
+body.dark-mode .news-section li h5 a:hover, .app.dark-mode-active .news-section li h5 a:hover { color: #90caf9; }
+body.dark-mode .news-section li div, .app.dark-mode-active .news-section li div { color: #90a4ae; }
+
+/* Dark Mode: Financial Tables */
+body.dark-mode .financial-table thead tr, .app.dark-mode-active .financial-table thead tr { background-color: #3b475c; border-bottom-color: #546e7a; }
+body.dark-mode .financial-table th, .app.dark-mode-active .financial-table th { border-color: #3b475c; color: #e0e0e0; }
+body.dark-mode .financial-table td, .app.dark-mode-active .financial-table td { border-color: #3b475c; color: #bdc3c7; }
+body.dark-mode .financial-table tbody tr:nth-child(even), .app.dark-mode-active .financial-table tbody tr:nth-child(even) { background-color: #263238; }
+body.dark-mode .financial-table tbody tr:hover, .app.dark-mode-active .financial-table tbody tr:hover { background-color: #37474f; }
+body.dark-mode .financial-table td:first-child, .app.dark-mode-active .financial-table td:first-child { color: #cfd8dc; } 
+
+
+.price-up { color: #28a745; font-weight: 500; }
+.price-down { color: #dc3545; font-weight: 500; }
+.price-neutral { color: #6c757d; } 
+
+body.dark-mode .price-up,
+.app.dark-mode-active .price-up { color: #48bb78; } 
+body.dark-mode .price-down,
+.app.dark-mode-active .price-down { color: #f56565; } 
+body.dark-mode .price-neutral,
+.app.dark-mode-active .price-neutral { color: #a0aec0; }
+
+/* Inside .card-style or .price-volume-card for higher specificity */
+.price-volume-card .price-up { color: #28a745 !important; font-weight: 500; }
+.price-volume-card .price-down { color: #dc3545 !important; font-weight: 500; }
+/* ... and for dark mode ... */
+body.dark-mode .price-volume-card .price-up,
+.app.dark-mode-active .price-volume-card .price-up { color: #48bb78 !important; }
+body.dark-mode .price-volume-card .price-down,
+.app.dark-mode-active .price-volume-card .price-down { color: #f56565 !important; }
