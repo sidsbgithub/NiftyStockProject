@@ -118,7 +118,14 @@ const StockPriceChart = ({ priceData = [], smaShortData = [], smaLongData = [], 
             zoom: { // Keep zoom/pan config
                 zoom: { wheel: { enabled: true, speed: 0.1 }, pinch: { enabled: true }, mode: 'x' },
                 pan: { enabled: true, mode: 'x', threshold: 5 },
-                limits: { x: { min: 'original', max: 'original', minRange: 50 * 24 * 60 * 60 * 1000 } },
+                limits: {
+                    x: { 
+                        min: 'original', // Keeps the original min data point as a boundary
+                        max: 'original', // Keeps the original max data point as a boundary
+                        // minRange: 50 * 24 * 60 * 60 * 1000 // Optional: minimum zoomable range
+                    },
+                    // y: { min: 'original', max: 'original' } // For y-axis if needed
+                },
             },
             // --- ADD ANNOTATION CONFIG ---
             annotation: {

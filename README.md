@@ -1,5 +1,8 @@
 # Nifty DMA Analyzer
 
+**Live Demo:** [https://nifty-analyzer-frontend.onrender.com](https://nifty-analyzer-frontend.onrender.com) 
+
+
 ## Project Overview
 
 The Nifty DMA Analyzer is a full-stack web application designed to analyze stocks from the Nifty 50 index using a Dual Moving Average (DMA) crossover strategy. It provides users with buy/sell/hold signals, detailed stock information, historical price charts, and financial statements.
