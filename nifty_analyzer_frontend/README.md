@@ -1,12 +1,44 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**3. Revised Frontend `README.md` (`NiftyStockProject/nifty_analyzer_frontend/README.md`)**
 
-Currently, two official plugins are available:
+```markdown
+# Nifty DMA Analyzer - Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This directory contains the React frontend for the Nifty DMA Analyzer, built with Vite.
 
-## Expanding the ESLint configuration
+## Functionality
+- Displays stock data fetched from the backend API.
+- Provides a Dashboard view with sortable and filterable stock overviews.
+- Offers a detailed Stock Detail page with:
+    - Market snapshot and DMA analysis.
+    - Interactive price charts (Candlestick, SMAs, Volume) using Chart.js.
+    - Key metrics get_stock_detail(ticker_symbol):
+    print(f"\n--- Requesting EXTENDED detail for {ticker_symbol} ---")
+    # ... (cache check logic) ...
+    # ... (base_stock_data fetching) ...
+    
+    stock_obj = yf.Ticker(ticker_symbol)
+    stock_info_obj = {} 
+    financials_annual, financials_quarterly, balance_sheet_annual, balance_sheet_quarterly, cash_flow_annual, cash_flow_quarterly = None, None, None, None, None, None
+    # news_data_list = [] # REMOVED or ensure it's always empty if key exists in payload
+    historical_data_for_chart, dma_signals_historical = [], [] 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    try: 
+        stock_info_obj = stock_obj.info
+        if not stock_info_obj: 
+            print(f"  WARN: stock.info was empty for {ticker_symbol}.")
+            stock_info_obj = {} 
+        
+        try: # Financials
+            financials_annual =, financial ratios, and financial statement tables.
+    - Company information and business summary.
+- Supports light and dark themes.
+
+## Setup
+1. Ensure Node.js (LTS version recommended) and npm (or yarn) are installed.
+2. Navigate to this directory (`nifty_analyzer_frontend/`).
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   # yarn install
