@@ -1,7 +1,8 @@
 // src/services/apiService.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api'; // Your backend URL
+//const API_BASE_URL = 'http://localhost:5000/api'; // Your backend URL
+const API_BASE_URL = 'https://nifty-analyzer-backend.onrender.com/api';
 
 // Instance for general API calls
 const apiClient = axios.create({
