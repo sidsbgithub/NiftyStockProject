@@ -1,7 +1,6 @@
 
 **3. Revised Frontend `README.md` (`NiftyStockProject/nifty_analyzer_frontend/README.md`)**
 
-```markdown
 # Nifty DMA Analyzer - Frontend
 
 This directory contains the React frontend for the Nifty DMA Analyzer, built with Vite.
